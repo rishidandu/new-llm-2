@@ -4,7 +4,7 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements-prod.txt
-    startCommand: python scripts/start_production.py
+    startCommand: gunicorn --bind 0.0.0.0:$PORT scripts.start_production:main()
     healthCheckPath: /health
     envVars:
       - key: OPENAI_API_KEY
@@ -14,4 +14,14 @@ services:
       - key: TWILIO_AUTH_TOKEN
         sync: false
       - key: TWILIO_PHONE_NUMBER
-        sync: false 
+        sync: false
+      - key: QDRANT_HOST
+        value: "your-qdrant-host"
+      - key: QDRANT_PORT
+        value: "6333"
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: FLASK_ENV
+        value: "production"
+      - key: PYTHONPATH
+        value: "." 
