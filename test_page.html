@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Stats Loading</title>
+</head>
+<body>
+    <h1>Test Stats Loading</h1>
+    <div id="stats">📊 Loading collection stats...</div>
+    
+    <script>
+    async function loadStats() {
+        try {
+            console.log('Attempting to load stats...');
+            const response = await fetch('/stats');
+            console.log('Response status:', response.status);
+            console.log('Response ok:', response.ok);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            
+            const stats = await response.json();
+            console.log('Stats loaded:', stats);
+            
+            document.getElementById('stats').innerHTML = 
+                `📊 Collection: ${stats.vector_store.total_documents} documents | ${stats.vector_store.collection_name}`;
+                
+            console.log('Stats updated in DOM');
+        } catch (e) {
+            console.error('Error loading stats:', e);
+            document.getElementById('stats').innerHTML = '📊 Error loading stats: ' + e.message;
+        }
+    }
+    
+    // Load stats when page loads
+    window.onload = function() {
+        console.log('Page loaded, calling loadStats()');
+        loadStats();
+    };
+    </script>
+</body>
+</html> 

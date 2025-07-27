@@ -1,0 +1,35 @@
+# Core dependencies for ASU RAG System
+numpy>=1.21.0
+openai>=1.0.0
+chromadb>=0.4.0
+flask>=2.3.0
+flask-cors>=6.0.0
+gradio>=3.50.0
+tqdm>=4.64.0
+
+# Twilio SMS integration
+twilio>=8.0.0
+
+# Reddit API dependencies
+praw>=7.7.0
+schedule>=1.2.0
+
+# Web scraping
+requests>=2.28.0
+trafilatura>=2.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+scikit-learn>=1.1.0
+
+# Testing
+pytest>=8.0.0
+
+# Reranking
+sentence-transformers>=2.2.0
+
+# Vector databases
+qdrant-client>=1.7.0
+
+# Optional: for better performance
+# faiss-gpu>=1.7.0  # Uncomment if you have GPU support 
