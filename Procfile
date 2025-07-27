@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:$PORT scripts.start_production:main() 
+web: gunicorn --bind 0.0.0.0:$PORT scripts.start_production:main 

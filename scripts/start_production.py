@@ -28,6 +28,15 @@ def create_production_app():
         # Load configuration
         config = Config()
         
+        # Ensure data directories exist
+        os.makedirs(config.DATA_DIR, exist_ok=True)
+        os.makedirs(config.RAW_DATA_DIR, exist_ok=True)
+        os.makedirs(config.PROCESSED_DATA_DIR, exist_ok=True)
+        os.makedirs(config.VECTOR_DB_DIR, exist_ok=True)
+        os.makedirs(config.ASU_RAW_DIR, exist_ok=True)
+        os.makedirs(config.REDDIT_RAW_DIR, exist_ok=True)
+        logger.info("✅ Data directories created/verified")
+        
         # Initialize RAG system (lazy loading for production)
         rag_system = ASURAGSystem(config)
         
