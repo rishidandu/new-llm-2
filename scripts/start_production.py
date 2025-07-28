@@ -55,18 +55,11 @@ def create_production_app():
         logger.error(f"❌ Failed to create production app: {e}")
         raise
 
-def main():
-    """Main production entry point for gunicorn"""
-    try:
-        logger.info("🏭 Creating production app...")
-        return create_production_app()
-    except Exception as e:
-        logger.error(f"❌ Production startup failed: {e}")
-        sys.exit(1)
+# Create the application instance for gunicorn
+app = create_production_app()
 
 if __name__ == '__main__':
     # For direct execution (development)
-    app = main()
     port = int(os.environ.get('PORT', 8000))
     logger.info(f"🔧 Development mode - starting on port {port}")
     app.run(host='0.0.0.0', port=port, debug=False) 

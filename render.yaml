@@ -4,7 +4,7 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements-prod.txt
-    startCommand: gunicorn --bind 0.0.0.0:$PORT scripts.start_production:main
+    startCommand: gunicorn --bind 0.0.0.0:$PORT scripts.start_production:app
     healthCheckPath: /health
     envVars:
       - key: OPENAI_API_KEY
