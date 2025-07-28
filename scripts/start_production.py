@@ -58,6 +58,9 @@ def create_production_app():
 # Create the application instance for gunicorn
 app = create_production_app()
 
+# Compatibility alias for gunicorn (in case Render is using cached config)
+main = app
+
 if __name__ == '__main__':
     # For direct execution (development)
     port = int(os.environ.get('PORT', 8000))
